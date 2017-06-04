@@ -3,6 +3,9 @@
 ## 简介
 检测项目中的重复代码，原理参考了 [PMD 工具的 CPD 部分](https://pmd.github.io/) 。由于 IntelliJ IDEA 等开发工具和 PMD 等分析工具已经包含了重复代码检测的功能，本项目的实际使用意义不大。
 
+## 运行方法
+将该项目作为 Maven 项目导入到 IDE 中（ IDE 需要安装 [Lombok 插件](https://projectlombok.org/)），在 `CPDLauncher` 中设置参数，然后运行。
+
 ## 原理
 
 **CPD 原理：** [PMD 源码阅读（2）— 复制粘贴检测](http://suziquan.me/2016/12/24/PMD-READING-2/)
