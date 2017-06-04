@@ -1,6 +1,7 @@
 package edu.nju.cpd.core;
 
 import org.antlr.v4.runtime.Token;
+
 import java.util.List;
 
 /**
@@ -10,7 +11,8 @@ class DuplicateOutputter {
 
     /**
      * 将结果输出到控制台
-     * @param tokenManager 分词结果
+     *
+     * @param tokenManager  分词结果
      * @param duplicateSets 重复集列表
      */
     void print(TokenManager tokenManager, List<DuplicateCollector.DuplicateSet> duplicateSets) {

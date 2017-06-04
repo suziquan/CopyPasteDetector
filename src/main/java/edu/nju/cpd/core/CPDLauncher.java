@@ -1,6 +1,7 @@
 package edu.nju.cpd.core;
 
 import java.nio.file.Paths;
+
 import org.antlr.v4.runtime.Lexer;
 import edu.nju.cpd.lexer.Java8Lexer;
 
@@ -9,7 +10,7 @@ import edu.nju.cpd.lexer.Java8Lexer;
  */
 public class CPDLauncher {
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 //        String sourceDirPath = "d:/MyCPD";
         String sourceDirPath = Paths.get(CPDLauncher.class.getResource("/code").toURI()).toString();
         boolean recursive = true;

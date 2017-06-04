@@ -21,26 +21,28 @@ class DuplicateCollector {
     static class DuplicateSet {
         private Set<Token> tokenSet;
         private int duplicateTokenCount;
-        
-		public DuplicateSet(Set<Token> tokenSet, int duplicateTokenCount) {
-			super();
-			this.tokenSet = tokenSet;
-			this.duplicateTokenCount = duplicateTokenCount;
-		}
-		
-		public Set<Token> getTokenSet() {
-			return tokenSet;
-		}
-		public int getDuplicateTokenCount() {
-			return duplicateTokenCount;
-		}
-        
+
+        DuplicateSet(Set<Token> tokenSet, int duplicateTokenCount) {
+            super();
+            this.tokenSet = tokenSet;
+            this.duplicateTokenCount = duplicateTokenCount;
+        }
+
+        Set<Token> getTokenSet() {
+            return tokenSet;
+        }
+
+        int getDuplicateTokenCount() {
+            return duplicateTokenCount;
+        }
+
     }
 
     /**
      * 将多段两两重复的代码片段合并到一起
+     *
      * @param duplicatePairs 重复对列表
-     * @return  重复集列表，列表按重复集的重复Token数从大到小排列
+     * @return 重复集列表，列表按重复集的重复Token数从大到小排列
      */
     List<DuplicateSet> collect(List<DuplicateFinder.DuplicatePair> duplicatePairs) {
         List<DuplicateSet> duplicateSets = new ArrayList<>();

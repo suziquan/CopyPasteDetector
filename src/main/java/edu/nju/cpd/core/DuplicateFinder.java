@@ -21,23 +21,25 @@ class DuplicateFinder {
         private Token token1;
         private Token token2;
         private int duplicateTokenCount;
-        
-		public DuplicatePair(Token token1, Token token2, int duplicateTokenCount) {
-			super();
-			this.token1 = token1;
-			this.token2 = token2;
-			this.duplicateTokenCount = duplicateTokenCount;
-		}
-		
-		public Token getToken1() {
-			return token1;
-		}
-		public Token getToken2() {
-			return token2;
-		}
-		public int getDuplicateTokenCount() {
-			return duplicateTokenCount;
-		}
+
+        DuplicatePair(Token token1, Token token2, int duplicateTokenCount) {
+            super();
+            this.token1 = token1;
+            this.token2 = token2;
+            this.duplicateTokenCount = duplicateTokenCount;
+        }
+
+        Token getToken1() {
+            return token1;
+        }
+
+        Token getToken2() {
+            return token2;
+        }
+
+        int getDuplicateTokenCount() {
+            return duplicateTokenCount;
+        }
     }
 
 
@@ -45,8 +47,9 @@ class DuplicateFinder {
      * 使用 Rabin Karp算法查找重复对
      * Rabin Karp算法代码参考：http://algs4.cs.princeton.edu/53substring/RabinKarp.java.html
      * 关于代码原理的详细说明，可参考：http://suziquan.me/2016/12/24/PMD-READING-2/
+     *
      * @param tokenManager 分词结果
-     * @param minTokenNum 最小重复Token数
+     * @param minTokenNum  最小重复Token数
      * @return 重复对列表
      */
     List<DuplicatePair> find(TokenManager tokenManager, int minTokenNum) {
@@ -109,10 +112,11 @@ class DuplicateFinder {
 
     /**
      * 获取两段代码重复的Token数量
+     *
      * @param tokenManager 分词结果
-     * @param token1 代码片段1的起始Token
-     * @param token2 代码片段2的起始Token
-     * @param minTokenNum 最小重复Token数
+     * @param token1       代码片段1的起始Token
+     * @param token2       代码片段2的起始Token
+     * @param minTokenNum  最小重复Token数
      * @return 重复Token数量
      * @throws Exception 两段代码不应该放到结果中
      */
@@ -149,11 +153,11 @@ class DuplicateFinder {
     }
 
     private class NotDuplicateException extends Exception {
-		private static final long serialVersionUID = 8753177403202818408L;
+        private static final long serialVersionUID = 8753177403202818408L;
     }
 
     private class DuplicateAlreadyContainedException extends Exception {
-		private static final long serialVersionUID = -2725008007630074643L;
+        private static final long serialVersionUID = -2725008007630074643L;
     }
 
 }

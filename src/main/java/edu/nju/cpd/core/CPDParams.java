@@ -34,39 +34,45 @@ class CPDParams {
      * 在分词过程中除去某些token类型
      */
     private int[] excludeTokenTypes;
-    
-	public CPDParams(String sourceDirPath, boolean recursive, String[] extensions, String encoding,
-			Class<? extends Lexer> lexerClass, int minTokenNum, int[] excludeTokenTypes) {
-		super();
-		this.sourceDirPath = sourceDirPath;
-		this.recursive = recursive;
-		this.extensions = extensions;
-		this.encoding = encoding;
-		this.lexerClass = lexerClass;
-		this.minTokenNum = minTokenNum;
-		this.excludeTokenTypes = excludeTokenTypes;
-	}
-	
-	public String getSourceDirPath() {
-		return sourceDirPath;
-	}
-	public boolean isRecursive() {
-		return recursive;
-	}
-	public String[] getExtensions() {
-		return extensions;
-	}
-	public String getEncoding() {
-		return encoding;
-	}
-	public Class<? extends Lexer> getLexerClass() {
-		return lexerClass;
-	}
-	public int getMinTokenNum() {
-		return minTokenNum;
-	}
-	public int[] getExcludeTokenTypes() {
-		return excludeTokenTypes;
-	}
-    
+
+    CPDParams(String sourceDirPath, boolean recursive, String[] extensions, String encoding,
+              Class<? extends Lexer> lexerClass, int minTokenNum, int[] excludeTokenTypes) {
+        super();
+        this.sourceDirPath = sourceDirPath;
+        this.recursive = recursive;
+        this.extensions = extensions;
+        this.encoding = encoding;
+        this.lexerClass = lexerClass;
+        this.minTokenNum = minTokenNum;
+        this.excludeTokenTypes = excludeTokenTypes;
+    }
+
+    String getSourceDirPath() {
+        return sourceDirPath;
+    }
+
+    boolean isRecursive() {
+        return recursive;
+    }
+
+    String[] getExtensions() {
+        return extensions;
+    }
+
+    String getEncoding() {
+        return encoding;
+    }
+
+    Class<? extends Lexer> getLexerClass() {
+        return lexerClass;
+    }
+
+    int getMinTokenNum() {
+        return minTokenNum;
+    }
+
+    int[] getExcludeTokenTypes() {
+        return excludeTokenTypes;
+    }
+
 }
