@@ -1,18 +1,17 @@
 package edu.nju.cpd.core;
 
-import java.io.IOException;
-
+import java.nio.file.Paths;
+import org.antlr.v4.runtime.Lexer;
 import edu.nju.cpd.lexer.Java8Lexer;
-import org.antlr.v4.runtime.*;
 
 /**
  * 程序启动类
  */
 public class CPDLauncher {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception{
 //        String sourceDirPath = "d:/MyCPD";
-        String sourceDirPath = CPDLauncher.class.getResource("/code").getPath();
+        String sourceDirPath = Paths.get(CPDLauncher.class.getResource("/code").toURI()).toString();
         boolean recursive = true;
         String[] extensions = {"java"};
         String encoding = "GBK";

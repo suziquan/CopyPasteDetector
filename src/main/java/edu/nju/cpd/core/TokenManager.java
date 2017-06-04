@@ -1,11 +1,12 @@
 package edu.nju.cpd.core;
 
-import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import lombok.Getter;
 import org.antlr.v4.runtime.Token;
 
 /**
@@ -13,10 +14,17 @@ import org.antlr.v4.runtime.Token;
  */
 class TokenManager {
 
-    @Getter
-    private Map<File, List<Token>> tokensMap = new HashMap<>();
+    private Map<String, List<Token>> tokensMap = new HashMap<>();
+    
+    public Map<String, List<Token>> getTokensMap() {
+		return tokensMap;
+	}
 
-    /**
+	public void setTokensMap(Map<String, List<Token>> tokensMap) {
+		this.tokensMap = tokensMap;
+	}
+
+	/**
      * 存储Token和它被分配的ID，这个ID供Rabin-Karp算法使用。两个文本相同的Token会被分配相同的ID
      */
     private Map<ComparableToken, Integer> tokenIdMap = new HashMap<>();
@@ -53,11 +61,11 @@ class TokenManager {
 
     /**
      * 将代码文件和它对应的Token列表存放到分词结果中
-     * @param sourceFile 代码文件
+     * @param sourceFile 代码文件路径
      * @param tokens Token列表，即对单个代码文件的分词结果
      */
-    void addTokens(File sourceFile, List<Token> tokens) {
-        tokensMap.put(sourceFile, tokens);
+    void addTokens(String sourceFilePath, List<Token> tokens) {
+        tokensMap.put(sourceFilePath, tokens);
         for (Token token : tokens) {
             ComparableToken comparableToken = new ComparableToken(token);
             tokenIdMap.computeIfAbsent(comparableToken, k -> ++idCount);
@@ -70,11 +78,14 @@ class TokenManager {
      * @return Token列表，即对单个代码文件的分词结果
      */
     List<Token> getTokensOf(String sourceFilePath) {
-        File sourceFile = new File(sourceFilePath);
-        for (Entry<File, List<Token>> entry : tokensMap.entrySet()) {
-            if (sourceFile.getAbsolutePath().equals(entry.getKey().getAbsolutePath())) {
-                return entry.getValue();
-            }
+        for (Entry<String, List<Token>> entry : tokensMap.entrySet()) {
+            try {
+				if (Files.isSameFile(Paths.get(sourceFilePath), Paths.get(entry.getKey()))) {
+				    return entry.getValue();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
         }
         return null;
     }

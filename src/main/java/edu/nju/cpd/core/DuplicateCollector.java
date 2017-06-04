@@ -1,10 +1,14 @@
 package edu.nju.cpd.core;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.antlr.v4.runtime.Token;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-import java.util.*;
+import org.antlr.v4.runtime.Token;
 
 /**
  * 合并重复对
@@ -14,11 +18,23 @@ class DuplicateCollector {
     /**
      * 重复集，包含了多段相同的代码片段的起始Token，以及这些代码重复的Token数
      */
-    @Getter
-    @AllArgsConstructor
     static class DuplicateSet {
         private Set<Token> tokenSet;
         private int duplicateTokenCount;
+        
+		public DuplicateSet(Set<Token> tokenSet, int duplicateTokenCount) {
+			super();
+			this.tokenSet = tokenSet;
+			this.duplicateTokenCount = duplicateTokenCount;
+		}
+		
+		public Set<Token> getTokenSet() {
+			return tokenSet;
+		}
+		public int getDuplicateTokenCount() {
+			return duplicateTokenCount;
+		}
+        
     }
 
     /**

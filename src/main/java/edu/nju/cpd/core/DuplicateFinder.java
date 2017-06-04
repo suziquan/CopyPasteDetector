@@ -1,11 +1,13 @@
 package edu.nju.cpd.core;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import org.antlr.v4.runtime.Token;
-
 import java.math.BigInteger;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
+import org.antlr.v4.runtime.Token;
 
 /**
  * 找出重复对
@@ -15,12 +17,27 @@ class DuplicateFinder {
     /**
      * 重复对，包含了两个重复代码片段的起始Token，以及重复的Token数
      */
-    @Getter
-    @AllArgsConstructor
     static class DuplicatePair {
         private Token token1;
         private Token token2;
         private int duplicateTokenCount;
+        
+		public DuplicatePair(Token token1, Token token2, int duplicateTokenCount) {
+			super();
+			this.token1 = token1;
+			this.token2 = token2;
+			this.duplicateTokenCount = duplicateTokenCount;
+		}
+		
+		public Token getToken1() {
+			return token1;
+		}
+		public Token getToken2() {
+			return token2;
+		}
+		public int getDuplicateTokenCount() {
+			return duplicateTokenCount;
+		}
     }
 
 
@@ -131,10 +148,12 @@ class DuplicateFinder {
         return duplicateTokenCount;
     }
 
-    private static class NotDuplicateException extends Exception {
+    private class NotDuplicateException extends Exception {
+		private static final long serialVersionUID = 8753177403202818408L;
     }
 
-    private static class DuplicateAlreadyContainedException extends Exception {
+    private class DuplicateAlreadyContainedException extends Exception {
+		private static final long serialVersionUID = -2725008007630074643L;
     }
 
 }
