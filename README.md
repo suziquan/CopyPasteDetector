@@ -8,7 +8,7 @@
 
 ## 原理
 
-**CPD 原理：** [PMD 源码阅读（2）— 复制粘贴检测](http://suziquan.me/2016/12/24/PMD-READING-2/)
+**CPD 原理：** [PMD 源码阅读（2）— 复制粘贴检测](https://suziquan.cn/article/14)
 
 ### 检测过程主要分为三个步骤：
 #### 1. 对代码文件进行分词。
